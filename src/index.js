@@ -19,7 +19,15 @@ class App extends React.Component{
       icone: null,
       mensagemDeErro: null
     }
-    console.log('Construtor')
+  }
+
+  state = {
+    latitude: null,
+    longitude: null,
+    estacao: null,
+    data: null,
+    icone: null,
+    mensagemDeErro: null
   }
   
   componentDidMount(){
@@ -117,7 +125,7 @@ class App extends React.Component{
                       this.state.latitude ?
                         `Coordenadas: ${this.state.latitude, this.state.longitude}. Data: ${this.state.data}` :
                         this.state.mensagemDeErro ?
-                          `Erro: ${this.state.mensagemDeErro}` :
+                          `${this.state.mensagemDeErro}` :
                         `Clique no botão para saber a sua estação climática`
                       }
                     </p>
@@ -126,6 +134,11 @@ class App extends React.Component{
                     className="btn btn-outline-primary w-100 mt-2"
                     onClick={() => this.obterLocalizacao()}>
                     Qual a minha estação?
+                  </button>
+                  <button
+                    className="btn btn-outline-danger w-100 mt-2"
+                      onClick ={() => {ReactDOM.unmountComponentAtNode(document.querySelector('#root'))}}>
+                    Desmontar! Cuidado!
                   </button>
                 </div>
               </div>
